@@ -222,7 +222,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 				VolumeCapabilities: []*csi.VolumeCapability{
 					TestVolumeCapabilityWithAccessType(sc, csi.VolumeCapability_AccessMode_SINGLE_NODE_WRITER),
 				},
-				Secrets:    sc.Secrets.CreateVolumeSecret,
+				Secrets:    sc.GetCreateVolumeSecret(),
 				Parameters: sc.Config.TestVolumeParameters,
 			}
 
@@ -296,7 +296,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 						VolumeCapabilities: []*csi.VolumeCapability{
 							TestVolumeCapabilityWithAccessType(sc, csi.VolumeCapability_AccessMode_SINGLE_NODE_WRITER),
 						},
-						Secrets:    sc.Secrets.CreateVolumeSecret,
+						Secrets:    sc.GetCreateVolumeSecret(),
 						Parameters: sc.Config.TestVolumeParameters,
 					}
 
@@ -340,7 +340,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 				VolumeCapabilities: []*csi.VolumeCapability{
 					TestVolumeCapabilityWithAccessType(sc, csi.VolumeCapability_AccessMode_SINGLE_NODE_WRITER),
 				},
-				Secrets:    sc.Secrets.CreateVolumeSecret,
+				Secrets:    sc.GetCreateVolumeSecret(),
 				Parameters: sc.Config.TestVolumeParameters,
 			}
 			vol := r.MustCreateVolume(context.Background(), req)
@@ -374,7 +374,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 			rsp, err := r.CreateVolume(
 				context.Background(),
 				&csi.CreateVolumeRequest{
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -387,7 +387,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 				context.Background(),
 				&csi.CreateVolumeRequest{
 					Name:       name,
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -410,7 +410,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 					CapacityRange: &csi.CapacityRange{
 						RequiredBytes: TestVolumeSize(sc),
 					},
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -431,7 +431,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 					CapacityRange: &csi.CapacityRange{
 						RequiredBytes: TestVolumeSize(sc),
 					},
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -462,7 +462,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 					CapacityRange: &csi.CapacityRange{
 						RequiredBytes: size,
 					},
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -479,7 +479,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 					CapacityRange: &csi.CapacityRange{
 						RequiredBytes: size,
 					},
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -504,7 +504,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 						RequiredBytes: size1,
 						LimitBytes:    size1,
 					},
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -521,7 +521,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 						RequiredBytes: size2,
 						LimitBytes:    size2,
 					},
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -543,7 +543,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 					CapacityRange: &csi.CapacityRange{
 						RequiredBytes: size,
 					},
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -722,7 +722,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 					CapacityRange: &csi.CapacityRange{
 						RequiredBytes: TestVolumeSize(sc),
 					},
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -768,7 +768,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 					CapacityRange: &csi.CapacityRange{
 						RequiredBytes: TestVolumeSize(sc),
 					},
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -799,7 +799,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 					CapacityRange: &csi.CapacityRange{
 						RequiredBytes: TestVolumeSize(sc),
 					},
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -954,7 +954,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 					VolumeCapabilities: []*csi.VolumeCapability{
 						TestVolumeCapabilityWithAccessType(sc, csi.VolumeCapability_AccessMode_SINGLE_NODE_WRITER),
 					},
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -996,7 +996,7 @@ var _ = DescribeSanity("Controller Service [Controller Server]", func(sc *TestCo
 					VolumeCapabilities: []*csi.VolumeCapability{
 						TestVolumeCapabilityWithAccessType(sc, csi.VolumeCapability_AccessMode_SINGLE_NODE_WRITER),
 					},
-					Secrets:    sc.Secrets.CreateVolumeSecret,
+					Secrets:    sc.GetCreateVolumeSecret(),
 					Parameters: sc.Config.TestVolumeParameters,
 				},
 			)
@@ -1509,7 +1509,7 @@ var _ = DescribeSanity("ExpandVolume [Controller Server]", func(sc *TestContext)
 				TestVolumeCapabilityWithAccessType(sc, csi.VolumeCapability_AccessMode_SINGLE_NODE_WRITER),
 			},
 			Parameters: sc.Config.TestVolumeParameters,
-			Secrets:    sc.Secrets.CreateVolumeSecret,
+			Secrets:    sc.GetCreateVolumeSecret(),
 			CapacityRange: &csi.CapacityRange{
 				RequiredBytes: TestVolumeSize(sc),
 			},
